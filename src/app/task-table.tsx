@@ -111,6 +111,9 @@ export function TaskTable() {
             </Button>
           </TableHead>
           <TableHead className="font-semibold text-[11px] text-[#667085]">
+            Category
+          </TableHead>
+          <TableHead className="font-semibold text-[11px] text-[#667085]">
             Date
           </TableHead>
           <TableHead className="font-semibold text-[11px] text-[#667085]">
