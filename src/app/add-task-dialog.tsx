@@ -107,20 +107,81 @@ export function AddTaskDialog({ open, onOpenChange }: AddTaskDialogProps) {
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                  />
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="App Design"> App Design</SelectItem>
-                    <SelectItem value="Web Design">Web Design</SelectItem>
-                    <SelectItem value="Dashboard UI">Dashboard UI</SelectItem>
-                  </SelectContent>
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select category" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent className="bg-white p-4 rounded-md shadow-xl">
+                      <SelectItem value="App Design"> App Design</SelectItem>
+                      <SelectItem value="Web Design">Web Design</SelectItem>
+                      <SelectItem value="Dashboard UI">Dashboard UI</SelectItem>
+                      <SelectItem value="Casual Work">Casual Work</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Status</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select status" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent className="bg-white p-4 rounded-md shadow-xl">
+                      <SelectItem value="On list">On List</SelectItem>
+                      <SelectItem value="On going">On Going</SelectItem>
+                      <SelectItem value="Done">Done</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="members"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Number of Members</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      min="1"
+                      max="5"
+                      placeholder="Enter number of members"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <div className="flex justify-end gap-3 pt-4">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => onOpenChange(false)}
+              >
+                Cancel
+              </Button>
+              <Button type="submit" disabled={loading}>
+                {loading ? "Adding..." : "Add Task"}
+              </Button>
+            </div>
           </form>
         </Form>
       </DialogContent>
